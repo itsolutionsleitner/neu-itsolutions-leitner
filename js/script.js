@@ -110,6 +110,73 @@ document.addEventListener('DOMContentLoaded', () => {
     requestAnimationFrame(draw);
   });
 
+  // === COOKIE-BANNER ===
+  const cookieBanner = document.querySelector('.cookie-banner');
+
+  function getCookieConsent() {
+    try {
+      return JSON.parse(localStorage.getItem('cookieConsent'));
+    } catch {
+      return null;
+    }
+  }
+
+  function setCookieConsent(categories) {
+    localStorage.setItem('cookieConsent', JSON.stringify({
+      necessary: true,
+      ...categories,
+      date: new Date().toISOString(),
+    }));
+  }
+
+  if (cookieBanner) {
+    const statisticsToggle = cookieBanner.querySelector('[data-cookie-category="statistics"]');
+    const marketingToggle = cookieBanner.querySelector('[data-cookie-category="marketing"]');
+
+    const openBanner = (openSettings) => {
+      const saved = getCookieConsent();
+      if (saved) {
+        statisticsToggle.checked = !!saved.statistics;
+        marketingToggle.checked = !!saved.marketing;
+      }
+      cookieBanner.classList.toggle('settings-open', !!openSettings);
+      cookieBanner.classList.add('visible');
+    };
+
+    if (!getCookieConsent()) {
+      setTimeout(() => openBanner(false), 600);
+    }
+
+    cookieBanner.querySelectorAll('[data-cookie-action]').forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const action = btn.dataset.cookieAction;
+
+        if (action === 'settings') {
+          cookieBanner.classList.toggle('settings-open');
+          return;
+        }
+        if (action === 'accepted') {
+          setCookieConsent({ statistics: true, marketing: true });
+        } else if (action === 'rejected') {
+          setCookieConsent({ statistics: false, marketing: false });
+        } else if (action === 'save') {
+          setCookieConsent({
+            statistics: statisticsToggle.checked,
+            marketing: marketingToggle.checked,
+          });
+        }
+        cookieBanner.classList.remove('visible', 'settings-open');
+      });
+    });
+
+    document.querySelectorAll('.cookie-settings-link').forEach((link) => {
+      link.addEventListener('click', (e) => {
+        e.preventDefault();
+        openBanner(true);
+      });
+    });
+  }
+
   // === FAQ AKKORDEON ===
   document.querySelectorAll('.faq-item').forEach((item) => {
     const question = item.querySelector('.faq-question');

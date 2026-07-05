@@ -67,7 +67,7 @@
         <p>Wenn Sie uns über das Kontaktformular eine Anfrage senden, werden die von Ihnen angegebenen Daten (Name, E-Mail-Adresse, Telefonnummer, Nachricht) zur Bearbeitung Ihrer Anfrage gespeichert und verarbeitet. Die Übermittlung erfolgt über den Dienst Formspree, wodurch Daten auch außerhalb der EU (USA) verarbeitet werden können. Rechtsgrundlage ist Art. 6 Abs. 1 lit. b DSGVO (vorvertragliche Anfrage) bzw. Ihre Einwilligung nach Art. 6 Abs. 1 lit. a DSGVO.</p>
 
         <h2>4. Cookies</h2>
-        <p>Diese Webseite verwendet keine Tracking- oder Marketing-Cookies. Es kommen ausschließlich technisch notwendige Funktionen zum Einsatz.</p>
+        <p>Beim ersten Besuch dieser Webseite können Sie über unser Cookie-Banner auswählen, welche Kategorien von Cookies Sie zulassen möchten. Technisch notwendige Cookies (z.&nbsp;B. zur Speicherung Ihrer Cookie-Auswahl) sind für den Betrieb der Webseite erforderlich und immer aktiv. Die Kategorien „Statistik" und „Marketing" werden aktuell auf dieser Webseite nicht genutzt, können aber optional aktiviert werden, sofern entsprechende Dienste künftig eingebunden werden. Ihre Auswahl wird lokal in Ihrem Browser gespeichert und kann jederzeit über den Link „Cookie-Einstellungen" im Footer geändert werden.</p>
 
         <h2>5. Ihre Rechte</h2>
         <ul>
@@ -117,6 +117,7 @@
         <ul>
           <li><a href="impressum.html">Impressum</a></li>
           <li><a href="datenschutz.html">Datenschutz</a></li>
+          <li><a href="#" class="cookie-settings-link">Cookie-Einstellungen</a></li>
         </ul>
       </div>
     </div>
@@ -125,6 +126,53 @@
       <p>Steiermark, Österreich</p>
     </div>
   </footer>
+
+  <!-- Cookie-Banner -->
+  <div class="cookie-banner">
+    <div class="cookie-banner-main">
+      <p>Wir verwenden Cookies für den Betrieb unserer Webseite. Technisch notwendige Cookies sind immer aktiv, bei allen anderen Kategorien entscheiden Sie selbst. Details finden Sie in unserer <a href="datenschutz.html">Datenschutzerklärung</a>.</p>
+      <div class="cookie-banner-actions">
+        <button type="button" class="btn btn-text btn-sm" data-cookie-action="settings">Einstellungen</button>
+        <button type="button" class="btn btn-secondary btn-sm" data-cookie-action="rejected">Ablehnen</button>
+        <button type="button" class="btn btn-primary btn-sm" data-cookie-action="accepted">Alle akzeptieren</button>
+      </div>
+    </div>
+    <div class="cookie-banner-settings">
+      <div class="cookie-option">
+        <div>
+          <strong>Technisch notwendig</strong>
+          <p>Erforderlich für den Betrieb der Webseite, z.&nbsp;B. Speicherung Ihrer Cookie-Auswahl.</p>
+        </div>
+        <label class="cookie-switch">
+          <input type="checkbox" checked disabled>
+          <span></span>
+        </label>
+      </div>
+      <div class="cookie-option">
+        <div>
+          <strong>Statistik</strong>
+          <p>Hilft uns, die Nutzung der Webseite zu verstehen (aktuell nicht im Einsatz).</p>
+        </div>
+        <label class="cookie-switch">
+          <input type="checkbox" data-cookie-category="statistics">
+          <span></span>
+        </label>
+      </div>
+      <div class="cookie-option">
+        <div>
+          <strong>Marketing</strong>
+          <p>Für personalisierte Inhalte und Werbung (aktuell nicht im Einsatz).</p>
+        </div>
+        <label class="cookie-switch">
+          <input type="checkbox" data-cookie-category="marketing">
+          <span></span>
+        </label>
+      </div>
+      <div class="cookie-banner-actions">
+        <button type="button" class="btn btn-primary btn-sm" data-cookie-action="save">Auswahl speichern</button>
+      </div>
+    </div>
+  </div>
 
   <script src="js/script.js"></script>
 </body>
