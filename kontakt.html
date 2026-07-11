@@ -15,12 +15,12 @@
   <!-- Navigation -->
   <header class="site-header">
     <div class="container header-inner">
-      <a href="index.html" class="logo">
+      <a href="index-main.html" class="logo">
         <img src="images/itsolutionsleitner-high-resolution-logo-transparent.png" alt="IT Solutions Leitner">
       </a>
       <nav class="nav">
         <ul class="nav-links">
-          <li><a href="index.html">Home</a></li>
+          <li><a href="index-main.html">Home</a></li>
           <li><a href="ueber-uns.html">Über uns</a></li>
           <li><a href="leistungen.html">Leistungen</a></li>
           <li><a href="faq.html">FAQ</a></li>
@@ -71,7 +71,8 @@
         </ul>
       </div>
 
-      <form class="contact-form reveal reveal-delay-1" action="https://formspree.io/f/DEIN-FORMSPREE-CODE" method="POST">
+      <form class="contact-form reveal reveal-delay-1" id="contact-form" action="https://formspree.io/f/maqgvero" method="POST">
+        <input type="hidden" name="_subject" value="Neue Kontaktanfrage über die Webseite">
         <div class="form-row">
           <div class="form-group">
             <label for="name">Name</label>
@@ -95,7 +96,16 @@
           <label for="consent">Ich habe die <a href="datenschutz.html">Datenschutzerklärung</a> gelesen und bin mit der Verarbeitung meiner Daten zur Bearbeitung meiner Anfrage einverstanden.</label>
         </div>
         <button type="submit" class="btn btn-primary btn-block">Nachricht senden</button>
+        <p class="form-error" hidden>Ups, da ist etwas schiefgelaufen. Bitte versuchen Sie es erneut oder schreiben Sie uns direkt an <a href="mailto:itsolutions.leitner@gmail.com">itsolutions.leitner@gmail.com</a>.</p>
       </form>
+
+      <div class="contact-form form-success" id="contact-form-success" hidden>
+        <div class="card-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12l5 5L20 7"/></svg>
+        </div>
+        <h3>Danke, wir melden uns!</h3>
+        <p>Ihre Nachricht ist bei uns eingegangen. Wir melden uns in der Regel innerhalb der nächsten Werktagen bei Ihnen.</p>
+      </div>
 
     </div>
   </section>
@@ -110,7 +120,7 @@
       <div class="footer-col">
         <h4>Navigation</h4>
         <ul>
-          <li><a href="index.html">Home</a></li>
+          <li><a href="index-main.html">Home</a></li>
           <li><a href="ueber-uns.html">Über uns</a></li>
           <li><a href="leistungen.html">Leistungen</a></li>
           <li><a href="faq.html">FAQ</a></li>

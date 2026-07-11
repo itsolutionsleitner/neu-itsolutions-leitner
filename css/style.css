@@ -427,6 +427,79 @@ section {
   font-size: 1.05rem;
 }
 
+/* Coming-Soon Seite */
+.coming-soon-page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.coming-soon-page .hero {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  padding: 60px 0;
+}
+
+.coming-soon-logo {
+  height: 64px;
+  width: auto;
+  margin: 0 auto 32px;
+}
+
+.coming-soon-contact {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 16px 36px;
+  margin-top: 8px;
+}
+
+.coming-soon-contact li {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-weight: 500;
+  font-size: 0.98rem;
+}
+
+.coming-soon-contact .card-icon {
+  width: 44px;
+  height: 44px;
+  margin-bottom: 0;
+}
+
+.coming-soon-contact .card-icon svg {
+  width: 20px;
+  height: 20px;
+}
+
+.coming-soon-contact a {
+  color: var(--color-text);
+  transition: color 0.2s ease;
+}
+
+.coming-soon-contact a:hover {
+  color: var(--color-primary);
+}
+
+.coming-soon-footer {
+  padding: 28px 24px;
+  text-align: center;
+  font-size: 0.84rem;
+  color: var(--color-text-muted);
+  border-top: 1px solid var(--color-border);
+}
+
+.coming-soon-footer a {
+  color: var(--color-text-muted);
+  text-decoration: underline;
+}
+
+.coming-soon-footer a:hover {
+  color: var(--color-primary);
+}
+
 /* === 7. SECTIONS === */
 .services-overview {
   display: grid;
@@ -862,6 +935,31 @@ section {
 .form-consent a {
   color: var(--color-primary);
   text-decoration: underline;
+}
+
+.form-error {
+  color: #C0392B;
+  font-size: 0.85rem;
+  text-align: center;
+  margin-top: 16px;
+}
+
+.form-error a {
+  color: #C0392B;
+  text-decoration: underline;
+}
+
+.form-success {
+  text-align: center;
+  padding: 60px 44px;
+}
+
+.form-success .card-icon {
+  margin: 0 auto 20px;
+}
+
+.form-success p {
+  color: var(--color-text-muted);
 }
 
 /* Legal pages */
@@ -1341,6 +1439,16 @@ section {
 }
 
 @media (max-width: 720px) {
+  .coming-soon-logo {
+    height: 48px;
+  }
+
+  .coming-soon-contact {
+    flex-direction: column;
+    align-items: center;
+    gap: 18px;
+  }
+
   .nav-links,
   .nav-cta {
     position: fixed;

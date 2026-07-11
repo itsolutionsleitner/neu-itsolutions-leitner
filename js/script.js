@@ -177,6 +177,47 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  // === KONTAKTFORMULAR (AJAX) ===
+  const contactForm = document.getElementById('contact-form');
+
+  if (contactForm) {
+    const submitBtn = contactForm.querySelector('button[type="submit"]');
+    const errorMsg = contactForm.querySelector('.form-error');
+    const successBox = document.getElementById('contact-form-success');
+
+    contactForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      errorMsg.hidden = true;
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Wird gesendet...';
+
+      const nameValue = contactForm.querySelector('#name').value.trim();
+      const subjectField = contactForm.querySelector('[name="_subject"]');
+      if (subjectField && nameValue) {
+        subjectField.value = `Neue Kontaktanfrage von ${nameValue}`;
+      }
+
+      fetch(contactForm.action, {
+        method: 'POST',
+        body: new FormData(contactForm),
+        headers: { Accept: 'application/json' },
+      })
+        .then((response) => {
+          if (response.ok) {
+            contactForm.hidden = true;
+            successBox.hidden = false;
+          } else {
+            throw new Error('Formspree-Fehler');
+          }
+        })
+        .catch(() => {
+          errorMsg.hidden = false;
+          submitBtn.disabled = false;
+          submitBtn.textContent = 'Nachricht senden';
+        });
+    });
+  }
+
   // === FAQ AKKORDEON ===
   document.querySelectorAll('.faq-item').forEach((item) => {
     const question = item.querySelector('.faq-question');
