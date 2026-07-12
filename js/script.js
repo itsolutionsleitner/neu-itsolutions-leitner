@@ -67,7 +67,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const ctx = canvas.getContext('2d');
     const isDark = canvas.dataset.theme === 'dark';
     const fontSize = 15;
-    const dropColor = isDark ? '214, 85, 95' : '156, 45, 58';
+    const dropColor = isDark ? '94, 168, 255' : '42, 92, 224';
     const fadeColor = isDark ? '15, 20, 32' : '255, 255, 255';
     let columns = 0;
     let drops = [];
