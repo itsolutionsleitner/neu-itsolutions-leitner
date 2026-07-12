@@ -63,7 +63,9 @@ git status
 
 **Letzten Commit rückgängig machen (falls nötig):**
 ```bash
-git revert HEAD
+git revert HEAD --no-edit
+
+git push
 ```
 
 ---
