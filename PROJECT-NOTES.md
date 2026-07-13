@@ -29,7 +29,7 @@ _"Wir bringen Ihr Unternehmen online."_
 _+43 660 3972228_
 
 **E-Mail:**
-_itsolutions.leitner@gmail.com_
+_office@itsolutions-leitner.at_
 
 **Adresse (falls relevant):**
 
@@ -130,8 +130,8 @@ _bunt, zu überladen, zu altmodisch_
 ## 9. Farben
 
 **Hat die Firma eine bestehende Markenfarbe / Corporate Design Farbe?**
-- [ ] Ja → HEX-Code oder Beschreibung: _______________
-- [X] Nein → Claude wählt passend zur Branche und zum Stil
+- [X] Ja → HEX-Code oder Beschreibung: #9C2D3A
+- [ ] Nein → Claude wählt passend zur Branche und zum Stil
 
 **Gibt es Farben die NICHT verwendet werden sollen?**
 _kein Lila, kein Gelb_
