@@ -14,7 +14,10 @@ document.addEventListener("DOMContentLoaded", () => {
     menuToggle.addEventListener("click", () => {
       const isOpen = menuToggle.getAttribute("aria-expanded") === "true";
       menuToggle.setAttribute("aria-expanded", String(!isOpen));
-      menuToggle.setAttribute("aria-label", isOpen ? "Menü öffnen" : "Menü schließen");
+      menuToggle.setAttribute(
+        "aria-label",
+        isOpen ? "Menü öffnen" : "Menü schließen",
+      );
       navigation.classList.toggle("is-open", !isOpen);
     });
 
@@ -31,6 +34,29 @@ document.addEventListener("DOMContentLoaded", () => {
     element.textContent = new Date().getFullYear();
   });
 
+  const cookieBanner = document.querySelector("[data-cookie-banner]");
+  const cookieAccept = document.querySelector("[data-cookie-accept]");
+
+  if (cookieBanner && cookieAccept) {
+    let cookieNoticeAccepted = false;
+    try {
+      cookieNoticeAccepted =
+        localStorage.getItem("cookie-notice-accepted") === "true";
+    } catch (error) {
+      cookieNoticeAccepted = false;
+    }
+
+    cookieBanner.hidden = cookieNoticeAccepted;
+    cookieAccept.addEventListener("click", () => {
+      cookieBanner.hidden = true;
+      try {
+        localStorage.setItem("cookie-notice-accepted", "true");
+      } catch (error) {
+        // Das Banner bleibt für die aktuelle Sitzung geschlossen.
+      }
+    });
+  }
+
   const revealElements = document.querySelectorAll(".reveal");
   if ("IntersectionObserver" in window) {
     const observer = new IntersectionObserver(
@@ -41,7 +67,7 @@ document.addEventListener("DOMContentLoaded", () => {
           currentObserver.unobserve(entry.target);
         });
       },
-      { threshold: 0.12 }
+      { threshold: 0.12 },
     );
     revealElements.forEach((element) => observer.observe(element));
   } else {
@@ -51,9 +77,11 @@ document.addEventListener("DOMContentLoaded", () => {
   document.querySelectorAll(".accordion details").forEach((detail) => {
     detail.addEventListener("toggle", () => {
       if (!detail.open) return;
-      document.querySelectorAll(".accordion details[open]").forEach((otherDetail) => {
-        if (otherDetail !== detail) otherDetail.removeAttribute("open");
-      });
+      document
+        .querySelectorAll(".accordion details[open]")
+        .forEach((otherDetail) => {
+          if (otherDetail !== detail) otherDetail.removeAttribute("open");
+        });
     });
   });
 
@@ -83,10 +111,11 @@ document.addEventListener("DOMContentLoaded", () => {
         const response = await fetch(contactForm.action, {
           method: "POST",
           body: new FormData(contactForm),
-          headers: { Accept: "application/json" }
+          headers: { Accept: "application/json" },
         });
 
-        if (!response.ok) throw new Error("Formular konnte nicht gesendet werden.");
+        if (!response.ok)
+          throw new Error("Formular konnte nicht gesendet werden.");
 
         contactForm.reset();
         contactForm.hidden = true;
