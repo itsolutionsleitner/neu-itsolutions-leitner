@@ -74,17 +74,6 @@ document.addEventListener("DOMContentLoaded", () => {
     revealElements.forEach((element) => element.classList.add("is-visible"));
   }
 
-  document.querySelectorAll(".accordion details").forEach((detail) => {
-    detail.addEventListener("toggle", () => {
-      if (!detail.open) return;
-      document
-        .querySelectorAll(".accordion details[open]")
-        .forEach((otherDetail) => {
-          if (otherDetail !== detail) otherDetail.removeAttribute("open");
-        });
-    });
-  });
-
   const contactForm = document.querySelector("[data-contact-form]");
   const formSuccess = document.querySelector("[data-form-success]");
   const formError = document.querySelector("[data-form-error]");

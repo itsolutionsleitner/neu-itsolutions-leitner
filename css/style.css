@@ -222,10 +222,9 @@ em {
   flex-shrink: 0;
 }
 .brand-logo {
+  display: block;
   width: 15rem;
-  height: 3.35rem;
-  object-fit: cover;
-  object-position: center;
+  height: auto;
 }
 .primary-nav {
   display: flex;
@@ -597,14 +596,6 @@ textarea:focus-visible {
 .page-hero h1 {
   margin-bottom: 1.35rem;
 }
-.about-title {
-  font-size: clamp(2rem, 5.5vw, 5.3rem);
-}
-.about-title > span,
-.about-title > em {
-  display: block;
-  white-space: nowrap;
-}
 .page-intro {
   max-width: 40rem;
   margin: 0 auto;
@@ -661,6 +652,7 @@ textarea:focus-visible {
   border-radius: 50%;
   background: var(--accent-pale);
   color: var(--accent);
+  font-family: "DM Mono", monospace;
   font-size: 1.45rem;
 }
 .service-card h3 {
@@ -1214,33 +1206,24 @@ textarea:focus-visible {
 .faq-layout {
   display: grid;
   grid-template-columns: 0.65fr 1fr;
-  gap: clamp(3rem, 10vw, 10rem);
   align-items: start;
+  gap: clamp(3rem, 8vw, 8rem);
 }
 .faq-sidebar {
   position: sticky;
   top: 2rem;
+  text-align: left;
 }
 .faq-sidebar p:not(.eyebrow) {
   max-width: 20rem;
   color: var(--muted);
 }
 .accordion {
+  width: 100%;
   border-top: 1px solid var(--line);
 }
 .accordion details {
   border-bottom: 1px solid var(--line);
-  transition:
-    background-color 0.3s ease,
-    border-color 0.3s ease;
-}
-.accordion details[open] {
-  border-color: rgba(156, 45, 58, 0.28);
-  background: linear-gradient(
-    90deg,
-    rgba(244, 231, 232, 0.62),
-    transparent 72%
-  );
 }
 .accordion summary {
   display: flex;
@@ -1251,34 +1234,31 @@ textarea:focus-visible {
   list-style: none;
   font-weight: 600;
   cursor: pointer;
-  transition:
-    color 0.25s ease,
-    padding 0.3s ease;
 }
 .accordion summary::-webkit-details-marker {
   display: none;
 }
 .accordion details[open] summary {
-  padding: 1.45rem 1.2rem 0.85rem;
+  padding-bottom: 0.85rem;
   color: var(--accent);
 }
 .accordion summary span {
   color: var(--accent);
-  font-size: 1.45rem;
+  font-size: 0;
   font-weight: 400;
-  transition: transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
-.accordion details[open] summary span {
-  transform: rotate(45deg);
+.accordion summary span::before {
+  content: "+";
+  font-size: 1.45rem;
+}
+.accordion details[open] summary span::before {
+  content: "−";
 }
 .faq-answer {
-  max-width: 39rem;
+  max-width: 46rem;
   padding: 0 3rem 1.5rem 0;
   color: var(--muted);
   font-size: 0.9rem;
-}
-.accordion details[open] .faq-answer {
-  animation: faq-answer-in 0.42s cubic-bezier(0.2, 0.8, 0.2, 1) both;
 }
 .accordion details p {
   margin: 0;
@@ -1595,16 +1575,6 @@ textarea:focus {
     transform: translateY(-0.65rem);
   }
 }
-@keyframes faq-answer-in {
-  from {
-    opacity: 0;
-    transform: translateY(-0.5rem);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
 @keyframes marker-pulse {
   0%,
   100% {
@@ -1664,7 +1634,6 @@ textarea:focus {
 }
 .brand-logo-footer {
   width: 14rem;
-  height: 3.2rem;
   border-radius: 0.4rem;
   background: var(--white);
 }
@@ -1833,7 +1802,6 @@ textarea:focus {
   }
   .brand-logo {
     width: 11.5rem;
-    height: 2.7rem;
   }
   .menu-toggle {
     display: grid;
@@ -1893,11 +1861,15 @@ textarea:focus {
   .hero h1 {
     font-size: clamp(2.8rem, 14vw, 4.8rem);
   }
-  .about-title {
-    font-size: clamp(1.7rem, 8vw, 2.4rem);
+  .hero-copy .button-row {
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    gap: 1rem;
   }
   .hero-visual {
     min-height: 22rem;
+    margin-bottom: 2.5rem;
   }
   .browser-window {
     top: 13%;
@@ -1922,18 +1894,34 @@ textarea:focus {
     width: 14rem;
     height: 14rem;
   }
+  .hero-foot {
+    position: relative;
+    z-index: 4;
+    gap: 1rem;
+    margin-top: 0;
+    background: var(--paper);
+  }
   .hero-foot p {
-    max-width: 17rem;
+    max-width: none;
+    margin-bottom: 0;
+    line-height: 1.55;
   }
   .service-grid,
   .values-grid {
     grid-template-columns: 1fr;
   }
   .service-card {
-    min-height: 18rem;
+    display: flex;
+    min-height: 20rem;
+    flex-direction: column;
   }
   .service-icon {
     margin: 1.8rem 0 1.5rem;
+  }
+  .service-card > a {
+    position: static;
+    margin-top: auto;
+    padding-top: 1.5rem;
   }
   .section-heading {
     margin-bottom: 2.5rem;
